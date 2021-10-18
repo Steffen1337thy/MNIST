@@ -74,7 +74,8 @@ def create_plot(train_lossd, val_lossd, train_accd, val_accd, epochs, fig_name):
 
 
 def train(train_data, val_data, model, epochs, lr, momentum, fig_name):
-    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=momentum)
+    optimizer = optim.sgd(model.parameters(), lr=lr, momentum=momentum)
+    #optimizer = optim.Adam(model.parameters(), lr=lr)
 
     train_lossd = {}
     val_lossd = {}
