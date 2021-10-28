@@ -74,7 +74,7 @@ def create_plot(train_lossd, val_lossd, train_accd, val_accd, epochs, fig_name):
 
 
 def train(train_data, val_data, model, epochs, lr, momentum, fig_name):
-    optimizer = optim.sgd(model.parameters(), lr=lr, momentum=momentum)
+    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=momentum)
     #optimizer = optim.Adam(model.parameters(), lr=lr)
 
     train_lossd = {}
@@ -82,6 +82,7 @@ def train(train_data, val_data, model, epochs, lr, momentum, fig_name):
     train_accd = {}
     val_accd = {}
     model_name=fig_name + '.pth'
+    path = 'models/' + model_name
 
 
     for epoch in range(1, epochs+1):
@@ -102,7 +103,7 @@ def train(train_data, val_data, model, epochs, lr, momentum, fig_name):
 
         # Save Model
         checkpoint = {'state_dict': model.state_dict(), 'optimizer': optimizer.state_dict()}
-        torch.save(checkpoint, model_name)
+        torch.save(checkpoint, path)
 
     create_plot(train_lossd, val_lossd,train_accd,val_accd, epochs=epochs, fig_name=fig_name)
     return val_acc

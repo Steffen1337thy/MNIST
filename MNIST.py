@@ -65,8 +65,6 @@ def main():
             x = self.conv3(x)
             x = F.max_pool2d(x, 2)
             x = F.relu(x)
-            #print(x.size())
-            #exit()
             x = x.view(-1,512)
             x = F.relu(self.fc1(x))
             x = self.fc2(x)
