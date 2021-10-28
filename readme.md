@@ -24,4 +24,4 @@ momentum: 0.9
 Special features:
 - progress bars
 - graphics for train/val accuracy over epochs
-- auto-protocol the models 
+- auto-protocol for the models to documentate parameters 
